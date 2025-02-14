@@ -41,7 +41,7 @@ export default function AddProduct(){
             setValue("photo", `https://imagedelivery.net/ei8ubQSruTv8AmnS3d2tXQ/${id}`)
         }
     };
-    const onSubmit = handleSubmit(
+    const onSubmit = 
         async (data:ProductType) => {
             if(!file){
                 return;
@@ -65,13 +65,10 @@ export default function AddProduct(){
                 //setError("")
             }
     
-        }
-    );
-    const onValid = async() => {
-        await onSubmit()
-    }
+        };
+
         return <div>
-        <form action={onValid} className="p-5 flex flex-col gap-5">
+        <form onSubmit={handleSubmit(onSubmit)} className="p-5 flex flex-col gap-5">
             <label htmlFor="photo" className="border-2 aspect-square flex items-center justify-center flex-col text-neutral-300 border-neutral-300 rounded-md border-dashed cursor-pointer bg-center bg-cover"
             style={{backgroundImage:`url(${preview})`}}>
                 {preview === "" ? 

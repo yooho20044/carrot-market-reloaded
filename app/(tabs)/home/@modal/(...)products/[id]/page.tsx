@@ -1,7 +1,7 @@
 import CloseModal from "@/components/close-modal"; 
 import db from "@/lib/db";
 import getSession from "@/lib/session";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Image from "next/image";
 import { UserIcon } from "@heroicons/react/24/solid";
 import { formatToWon } from "@/lib/utils";
@@ -52,6 +52,29 @@ export default async function Modal({
 
     revalidateTag("product-detail");
 
+    const createChatRoom = async() => {
+        "use server";
+        const session = await getSession();
+        const room = await db.chatRoom.create({
+            data:{
+                users:{
+                    connect:[
+                        {
+                            id:product.userId,
+                        },
+                        {
+                            id:session.id,
+                        },
+                    ],
+                },
+            },
+            select:{
+                id:true,
+            }
+        });
+        redirect(`/chats/${room.id}`);
+    }
+
     return ( 
         <div className="absolute w-full h-full z-50 flex justify-center items-center bg-black left-0 top-0 bg-opacity-60">
             <CloseModal />
@@ -83,7 +106,11 @@ export default async function Modal({
                         (
                         <Link href={`/products/edit/${product.id}`} className="bg-red-500 px-5 py-2.5 rounded-md text-white font-semibold">제품 수정하기</Link>
                         ):
-                        (<Link className="bg-orange-500 px-5 py-2.5 rounded-md text-white font-semibold" href={``}>채팅하기</Link>)}
+                        (
+                        <form action={createChatRoom}>
+                            <button className="bg-orange-500 px-5 py-2.5 rounded-md text-white font-semibold">채팅하기</button>
+                        </form>
+                        )}
                     </div>
                 </div>
             </div>
