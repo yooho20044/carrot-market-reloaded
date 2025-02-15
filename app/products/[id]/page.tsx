@@ -38,7 +38,7 @@ const getCachedProduct = nextCache(getProduct, ["product-detail"], {
     tags: ["product-detail", "xxxx"],
 });
 
-export async function getProductTitle(id:number){
+async function getProductTitle(id:number){
     const product = await db.product.findUnique({
         where:{
             id,
