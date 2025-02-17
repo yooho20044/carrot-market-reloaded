@@ -4,7 +4,7 @@ import db from "@/lib/db";
 import {z} from "zod";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
-import getSession from "@/lib/session";
+
 
 const checkUsername = (username:string) => !username.includes("potato");
 
@@ -62,6 +62,7 @@ const formSchema = z.object({
     path:["confirm_password"],
 });
 
+
 export async function createAcoount(prevState:any, formData:FormData){
     const data = {
         username: formData.get("username"),
@@ -88,9 +89,10 @@ export async function createAcoount(prevState:any, formData:FormData){
             }
         });
         //log the user in
-        const session = await getSession();
-        session.id = user.id
-        await session.save();
-        redirect("/profile");
+        // const session = await getSession();
+        // session.id = user.id
+        // await session.save();
+        redirect("/");
+
     }
 }
