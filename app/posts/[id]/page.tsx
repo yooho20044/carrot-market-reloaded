@@ -10,6 +10,8 @@ import TabBar from "@/components/tab-bar";
 import { UserIcon } from "@heroicons/react/24/solid";
 import Comment from "@/components/comment";
 import { Comment as PrismaComment } from "@prisma/client";
+import { XMarkIcon } from "@heroicons/react/24/solid";
+import CloseButton from "@/components/close-button";
 
 // ✅ 커스텀 타입: `PrismaComment`에 `user` 필드 추가
 type ExtendedComment = PrismaComment & {
@@ -164,8 +166,10 @@ export default async function PostDetail({params}: {params:{id:string}}){
         }
     }
 
+
     return (
         <div className="p-5 text-white">
+        <CloseButton path="/life" />
         <div className="flex items-center gap-2 mb-2">
         {post.user.avatar !== null ?
         (<Image

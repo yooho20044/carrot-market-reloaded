@@ -3,6 +3,7 @@ import getSession from "@/lib/session";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { UserIcon } from "@heroicons/react/24/solid";
+import CloseButton from "@/components/close-button";
 
 async function getStream(id:number){
     const stream = await db.liveStream.findUnique({
@@ -37,6 +38,7 @@ export default async function StreamDetail({params}: {params:{id:string}}){
     const session = await getSession();
     return (
         <div className="p-10">
+          <CloseButton path="/live" />
           <div className="relative aspect-video">
           <iframe
                 src={`https://${process.env.CLOUDFLARE_STREAM_DOMAIN}/${stream.stream_id}/iframe`}

@@ -2,10 +2,7 @@
 
 import db from "@/lib/db";
 import getSession from "@/lib/session";
-import { PhotoIcon } from "@heroicons/react/24/solid";
-import fs from "fs/promises";
 import { redirect } from "next/navigation";
-import { z } from "zod";
 import { productSchema } from "./schema";
 
 

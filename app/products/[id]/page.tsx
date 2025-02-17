@@ -100,7 +100,7 @@ export default async function ProductDetail({params,}: {params: {id:string};}){
         
     return (
         <div>
-            <CloseButton />
+            <CloseButton path="/home"/>
             <div className="relative aspect-square">
                 <Image fill src={`${product.photo}/width=500,height=500`} className="object-cover" alt={product.title} />
             </div>

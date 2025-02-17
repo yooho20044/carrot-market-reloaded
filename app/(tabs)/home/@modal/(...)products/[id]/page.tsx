@@ -74,10 +74,11 @@ export default async function Modal({
         });
         redirect(`/chats/${room.id}`);
     }
+    
 
     return ( 
         <div className="absolute w-full h-full z-50 flex justify-center items-center bg-black left-0 top-0 bg-opacity-60">
-            <CloseModal />
+            <CloseModal/>
             <div className="max-w-screen-sm flex justify-center w-full h-1/2">
                 <div className="relative aspect-square bg-neutral-700 text-neutral-200 rounded-md flex justify-center items-center">
                     <Image fill src={`${product.photo}/width=400,height=400`} className="object-cover" alt={product.title}/>
