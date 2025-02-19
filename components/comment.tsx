@@ -49,7 +49,7 @@ export default function Comment({ postId, comments = [], userId, userInfo }: { p
             {/* ✅ `optimisticComments`가 업데이트된 상태를 즉시 반영 */}
             {optimisticComments.map((comment: Comment, index) => (
                 <div className="flex flex-col border-b border-dashed border-neutral-300" key={comment.id || index}>
-                    <div className="flex flex-row mt-5 gap-2 items-center">
+                    <div className="flex flex-row mt-3 gap-2 items-center">
                         {comment.user?.avatar ? (
                             <Image width={28} height={28} className="size-7 rounded-full" src={comment.user.avatar} alt={comment.user.username} />
                         ) : (
@@ -69,7 +69,7 @@ export default function Comment({ postId, comments = [], userId, userInfo }: { p
                             </div>
                         )}
                     </div>
-                    <div className="py-3">
+                    <div className="py-3 pl-3">
                         <p>{comment.payload}</p>
                     </div>
                 </div>
