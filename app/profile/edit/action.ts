@@ -34,7 +34,6 @@ export async function getUploadUrl(){
 }
 
 export async function editUser(formData:FormData){
-    console.log("여기들어오니????")
     const data = {
         username: formData.get("username"),
         phone: formData.get("phone"),
@@ -43,7 +42,6 @@ export async function editUser(formData:FormData){
     };
     const results= profileSchema.safeParse(data);
     if(!results.success){
-        console.log("씨팔 호로새끼야")
         return results.error.flatten();
     }else{
         const session = await getSession();

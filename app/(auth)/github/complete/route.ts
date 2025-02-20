@@ -35,7 +35,7 @@ export async function GET(request: NextRequest){
         },
         cache: "no-cache"
     });
-    const {id, login, avatar_url} = await userProfileResponse.json();
+    const {id, login, email, avatar_url} = await userProfileResponse.json();
     const user = await db.user.findUnique({
         where:{
             github_id: id+""
@@ -56,6 +56,7 @@ export async function GET(request: NextRequest){
             username:login,
             github_id: id + "",
             avatar:avatar_url,
+            email,
             
         },
         select:{

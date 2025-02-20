@@ -97,7 +97,6 @@ export default function EditProfile(){
     const onSubmit = handleSubmit(
         async (data: ProfileType) => {
           // 파일이 있을 때만 업로드 처리
-          console.log("파일이 있나요??", file);
         if (file) {
             try{
                 const cloudflareForm = new FormData();
@@ -106,9 +105,7 @@ export default function EditProfile(){
                     method: "POST",
                     body: cloudflareForm,
                 });
-                console.log("여긴 왔나보네");
                 if (response.status !== 200) {
-                    console.log("업로드 실패");
                   // 업로드 실패 시 처리
                 return;
                 }
@@ -118,17 +115,13 @@ export default function EditProfile(){
             
             // onImageChange에서 이미 setValue("avatar", ...)를 통해 avatar URL이 설정되어 있다고 가정
           }else{
-            console.log("파일이 없음???")
             setValue("avatar", null);
           }
-          console.log("들어는오니???")
           // 파일이 없더라도 기존의 avatar 값(혹은 빈 값)을 이용하여 폼 데이터 생성
           const formData = new FormData();
-          console.log("username",data.username);
           formData.append("username", data.username);
           formData.append("phone", data.phone + "" || "");
           if (avatarUrlRef.current !== null) {
-            console.log("지나감??");
             formData.append("avatar", avatarUrlRef.current);
          }else if(data.avatar){
             formData.append("avatar", data.avatar);
