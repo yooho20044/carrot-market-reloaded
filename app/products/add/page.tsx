@@ -8,6 +8,8 @@ import { getUploadUrl, uploadProduct } from "./action";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { productSchema, ProductType } from "./schema";
 import { useForm } from "react-hook-form";
+import TabBar from "@/components/tab-bar";
+import CloseButton from "@/components/close-button";
 
 export default function AddProduct(){
     const [preview, setPreview] = useState("");
@@ -42,6 +44,7 @@ export default function AddProduct(){
     };
     const onSubmit = 
         async (data:ProductType) => {
+            console.log("1qjs")
             if(!file){
                 return;
             }
@@ -67,7 +70,8 @@ export default function AddProduct(){
         };
 
         return <div>
-        <form onSubmit={handleSubmit(onSubmit)} className="p-5 flex flex-col gap-5">
+        <CloseButton path="/home"/>
+        <form onSubmit={handleSubmit(onSubmit)} className="p-5 flex flex-col gap-5 mb-20">
             <label htmlFor="photo" className="border-2 aspect-square flex items-center justify-center flex-col text-neutral-300 border-neutral-300 rounded-md border-dashed cursor-pointer bg-center bg-cover"
             style={{backgroundImage:`url(${preview})`}}>
                 {preview === "" ? 
@@ -88,5 +92,6 @@ export default function AddProduct(){
             />
             <Button text="작성완료" />
         </form>
+        <TabBar />
     </div>
 }

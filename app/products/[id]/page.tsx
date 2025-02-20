@@ -99,7 +99,7 @@ export default async function ProductDetail({params,}: {params: {id:string};}){
     }
         
     return (
-        <div>
+        <div className="flex flex-col min-h-[120vh]">
             <CloseButton path="/home"/>
             <div className="relative aspect-square">
                 <Image fill src={`${product.photo}/width=500,height=500`} className="object-cover" alt={product.title} />
@@ -114,8 +114,8 @@ export default async function ProductDetail({params,}: {params: {id:string};}){
                     <h3>{product.user.username}</h3>
                 </div>
             </div>
-            <div className="p-5">
-                <h1 className="text-2xl font-semibold">{product.title}</h1>
+            <div className="flex flex-col overflow-auto p-5">
+                <h1 className="text-2xl font-semibold pb-2">{product.title}</h1>
                 <p>{product.description}</p>
             </div>
             <div className="fixed w-full bottom-0 left-0 p-5 pb-10 bg-neutral-800 flex justify-between items-center">

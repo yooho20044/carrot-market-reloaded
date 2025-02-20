@@ -111,7 +111,7 @@ export default function Live() {
                         </div>
 
                         {/* ✅ 업로드 시간 표시 */}
-                        <div className="flex ml-auto pt-3">
+                        <div className="flex ml-auto pt-3 px-2">
                             <span className="text-sm">{formatToTimeAgo(String(live.created_at))}</span>
                         </div>
                     </Link>

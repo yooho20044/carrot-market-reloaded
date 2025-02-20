@@ -6,7 +6,6 @@ interface InputProps{
 }
 
 const _Input = ({errors=[], name, ...rest}: InputProps& InputHTMLAttributes<HTMLInputElement>, ref:ForwardedRef<HTMLInputElement>) => {
-    console.log(rest);
     return(
         <div className="flex flex-col gap-2">
                     <input
